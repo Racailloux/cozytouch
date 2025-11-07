@@ -33,6 +33,13 @@ from .const import (
     HEATING_MODE_ECO_PLUS,
     HEATING_MODE_MANUAL,
     HEATING_MODE_PROG,
+    HEATING_MODE_AUTO,
+    HEATING_MODE_BOOST,
+    HEATING_MODE_BOOST_SCHEDULE,
+    HEATING_MODE_ABSENCE,
+    HEATING_MODE_ABSENCE_SCHEDULE,
+    HEATING_MODE_ANTILEGIONELLA,
+    HEATING_MODE_SMART_GRID,
     SWING_MODE_DOWN,
     SWING_MODE_MIDDLE_DOWN,
     SWING_MODE_MIDDLE_UP,
@@ -335,6 +342,25 @@ def get_model_infos(modelId: int, zoneName: str | None = None):
         modelInfos["HVACModes"] = {
             0: HVACMode.OFF,
             4: HVACMode.HEAT,
+        }
+
+    elif modelId == 1655:
+        modelInfos["name"] = "Aeromax 6"
+        modelInfos["type"] = CozytouchDeviceType.WATER_HEATER
+        modelInfos["HVACModes"] = {
+            0: HVACMode.OFF,
+            4: HVACMode.HEAT,
+        }
+
+        modelInfos["HeatingModes"] = {
+            1: HEATING_MODE_MANUAL,
+            4: HEATING_MODE_AUTO,
+            256: HEATING_MODE_BOOST,
+            512: HEATING_MODE_BOOST_SCHEDULE,
+            1024: HEATING_MODE_ABSENCE,
+            2048: HEATING_MODE_ABSENCE_SCHEDULE,
+            4096: HEATING_MODE_ANTILEGIONELLA,
+            8192: HEATING_MODE_SMART_GRID,
         }
 
     elif modelId == 1656:
